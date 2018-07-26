@@ -17,3 +17,4 @@ htmlcov/
 celerybeat-schedule
 how.txt
 .pytest_cache
+.vscode
