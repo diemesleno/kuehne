@@ -43,12 +43,12 @@ c) ./run.sh
 
 Recomended to use Postman (https://www.getpostman.com) 
 
+## Country Endpoints:
 ```
-Country Endpoints:
-
 [GET, POST]
+
 http://127.0.0.1:8000/countries/
-GET - To get the list of countries availables
+GET - To get the list of countries available
 
 Exemple of data received:
 
@@ -67,6 +67,7 @@ Exemple of data received:
     }
 ]
 
+http://127.0.0.1:8000/countries/
 POST - To create a new country
 
 Example data to send:
@@ -83,8 +84,8 @@ Example data received:
 }
 
 [GET, PUT, DELETE]
-http://127.0.0.1:8000/country/<int:pk>/
 
+http://127.0.0.1:8000/country/<int:pk>/
 GET - Get a country by pk
 
 Example of data received:
@@ -96,7 +97,7 @@ Example of data received:
     }
 ]
 
-
+http://127.0.0.1:8000/country/<int:pk>/
 PUT - To Update a country
 
 Example data to send:
@@ -112,18 +113,100 @@ Example of data received:
     "name": "Estonia"
 }
 
+http://127.0.0.1:8000/country/<int:pk>/
 DELETE - Delete a country by pk
 ```
 
+## City Endpoints:
 ```
-Country Endpoints:
 [GET, POST]
+
+http://127.0.0.1:8000/cities/
+GET - To get the list of cities available
+
+Exemple of data received:
+
+[
+    {
+        "id": 5,
+        "country_name": "Germany",
+        "name": "Berlin"
+    },
+    {
+        "id": 6,
+        "country_name": "Germany",
+        "name": "Frankfurt"
+    },
+    {
+        "id": 2,
+        "country_name": "Test",
+        "name": "Rio de Janeiro"
+    },
+    {
+        "id": 1,
+        "country_name": "Test",
+        "name": "São Paulo"
+    },
+    {
+        "id": 3,
+        "country_name": "Estonia",
+        "name": "Tallin"
+    },
+    {
+        "id": 4,
+        "country_name": "Estonia",
+        "name": "Tartu"
+    }
+]
+
+http://127.0.0.1:8000/cities/
+POST - To create a new city
+
+Example data to send:
+
+{
+    "name": "Ituiutaba"
+}
+
+Example data received:
+
+{
+    "id": 1,
+    "name": "Ituiutaba"
+}
 
 [GET, PUT, DELETE]
 
-GET http://127.0.0.1:8000/country/<int:pk>/
+http://127.0.0.1:8000/city/<int:pk>/
+GET - Get a city by pk
 
-City Endpoints
+Example of data received:
+
+[
+    {
+        "id": 1,
+        "name": "Ituiutaba"
+    }
+]
+
+http://127.0.0.1:8000/city/<int:pk>/
+PUT - To Update a city
+
+Example data to send:
+
+{
+    "name: "Tallin"
+}
+
+Example of data received:
+
+{
+    "id": 1,
+    "name": "Tallin"
+}
+
+http://127.0.0.1:8000/city/<int:pk>/
+DELETE - Delete a city by pk
 ```
 
 ## Some screenshots
