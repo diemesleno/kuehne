@@ -42,7 +42,10 @@ c) ./run.sh
 ## Some screenshots
 
 ### Main Page
-![](app.png)
+![](api_main.png)
+
+### Admin Page
+![](admin.png)
 
 
 ## Release History
