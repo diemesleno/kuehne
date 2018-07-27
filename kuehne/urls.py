@@ -14,8 +14,16 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+
+from kuehne.core.views import IndexView, Template404View, Template500View
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('api/v1/', include('kuehne.core.api.urls'), name='api'),
+    path('', IndexView.as_view(), name='index')
 ]
+
+
+handler404 = Template404View.as_view()
+handler500 = Template500View.as_view()
