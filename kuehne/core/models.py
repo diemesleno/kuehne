@@ -18,7 +18,7 @@ class Country(Base):
     """
     Class to manage Countries (Simple Form)
     """
-    name = models.CharField(max_length=120)
+    name = models.CharField(max_length=120, unique=True)
 
     class Meta:
         verbose_name = 'Country'
@@ -45,17 +45,28 @@ class City(Base):
         return str(self.name)
 
 
+class Status(Base):
+    """ 
+    Class to manage the shipments status
+    """
+    status = models.CharField(max_length=20, unique=True)
+    
+    class Meta:
+        verbose_name = 'Status'
+        verbose_name_plural = 'Status'
+        ordering = ('status',)
+    
+    def __str__(self):
+        return str(self.status)
+
+
 class Shipment(Base):
     """ 
     Class to manage the shipments
     """
-    STATUS_CHOICES = (
-        ('1', 'In Transit'),
-        ('2', 'Delivered'),
-    )
     object_number = models.CharField(max_length=12, unique=True)
-    status = models.CharField(max_length=1, choices=STATUS_CHOICES)
-    last_location = models.ForeignKey('core.City', verbose_name='Last Location', related_name='city_last_located', on_delete=models.DO_NOTHING)
+    status = models.ForeignKey('core.Status', verbose_name='Shipment Status', on_delete=models.DO_NOTHING)
+    actual_location = models.ForeignKey('core.City', verbose_name='Actual Location', related_name='city_actual_located', on_delete=models.DO_NOTHING)
     next_location = models.ForeignKey('core.City', verbose_name='Next Location', related_name='city_next_location', on_delete=models.DO_NOTHING)
 
     class Meta:
