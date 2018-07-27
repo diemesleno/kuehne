@@ -39,6 +39,93 @@ b) cd kuehne
 c) ./run.sh
 ```
 
+### How to Use it
+
+Recomended to use Postman (https://www.getpostman.com) 
+
+```
+Country Endpoints:
+
+[GET, POST]
+http://127.0.0.1:8000/countries/
+GET - To get the list of countries availables
+
+Exemple of data received:
+
+[
+    {
+        "id": 1,
+        "name": "Brazil"
+    },
+    {
+        "id": 2,
+        "name": "Estonia"
+    },
+    {
+        "id": 3,
+        "name": "Germany"
+    }
+]
+
+POST - To create a new country
+
+Example data to send:
+
+{
+    "name": "Brazil"
+}
+
+Example data received:
+
+{
+    "id": 1,
+    "name": "Brazil"
+}
+
+[GET, PUT, DELETE]
+http://127.0.0.1:8000/country/<int:pk>/
+
+GET - Get a country by pk
+
+Example of data received:
+
+[
+    {
+        "id": 1,
+        "name": "Brazil"
+    }
+]
+
+
+PUT - To Update a country
+
+Example data to send:
+
+{
+    "name: "Estonia"
+}
+
+Example of data received:
+
+{
+    "id": 1,
+    "name": "Estonia"
+}
+
+DELETE - Delete a country by pk
+```
+
+```
+Country Endpoints:
+[GET, POST]
+
+[GET, PUT, DELETE]
+
+GET http://127.0.0.1:8000/country/<int:pk>/
+
+City Endpoints
+```
+
 ## Some screenshots
 
 ### Main Page
