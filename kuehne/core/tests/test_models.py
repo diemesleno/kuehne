@@ -8,11 +8,11 @@ class TestCountry(TestCase):
     def setUp(self):
         self.models = mommy.make('core.Country')
     
-    def test_str(self):
+    def test__str__(self):
         """ 
         Ensure if the str returned has the same value created
         """
-        self.assertEquals(str(self.models), str(self.models.name))
+        self.assertEquals(str(self.models), self.models.name)
 
 
 class TestCity(TestCase):
@@ -23,7 +23,7 @@ class TestCity(TestCase):
         self.models = mommy.make('core.City')
     
     def test_str(self):
-        self.assertEquals(str(self.models), str(self.models.name))
+        self.assertEquals(str(self.models), self.models.name)
 
 
 class TestStatus(TestCase):
@@ -34,7 +34,7 @@ class TestStatus(TestCase):
         self.models = mommy.make('core.Status')
     
     def test_str(self):
-        self.assertEquals(str(self.models), str(self.models.status))
+        self.assertEquals(str(self.models), self.models.name)
 
 
 class TestShipment(TestCase):
@@ -45,4 +45,4 @@ class TestShipment(TestCase):
         self.models = mommy.make('core.Shipment')
     
     def test_str(self):
-        self.assertEquals(str(self.models), str(self.models.object_number))
+        self.assertEquals(str(self.models), self.models.object_number)
