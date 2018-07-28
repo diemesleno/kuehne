@@ -47,7 +47,7 @@ Recomended to use Postman (https://www.getpostman.com)
 ```
 [GET, POST]
 
-http://127.0.0.1:8000/api/v1/countries/
+http://127.0.0.1:8000/api/v1/country/
 GET - To get the list of countries available
 
 Exemple of data received:
@@ -67,20 +67,20 @@ Exemple of data received:
     }
 ]
 
-http://127.0.0.1:8000/api/v1/countries/
+http://127.0.0.1:8000/api/v1/country/
 POST - To create a new country
 
 Example data to send:
 
 {
-    "name": "Brazil"
+    "name": "Paraguay"
 }
 
 Example data received:
 
 {
-    "id": 1,
-    "name": "Brazil"
+    "id": 4,
+    "name": "Paraguay"
 }
 
 [GET, PUT, DELETE]
@@ -121,7 +121,7 @@ DELETE - Delete a country by pk
 ```
 [GET, POST]
 
-http://127.0.0.1:8000/api/v1/cities/
+http://127.0.0.1:8000/api/v1/city/
 GET - To get the list of cities available
 
 Exemple of data received:
@@ -159,7 +159,7 @@ Exemple of data received:
     }
 ]
 
-http://127.0.0.1:8000/api/v1/cities/
+http://127.0.0.1:8000/api/v1/city/
 POST - To create a new city
 
 Example data to send:
@@ -172,7 +172,7 @@ Example data to send:
 Example data received:
 
 {
-    "id": 1,
+    "id": 7,
     "country_name": "Brazil",
     "name": "Ituiutaba"
 }
@@ -186,7 +186,8 @@ Example of data received:
 
 [
     {
-        "id": 1,
+        "id": 7,
+        "country_name": "Brazil",
         "name": "Ituiutaba"
     }
 ]
@@ -204,7 +205,7 @@ Example data to send:
 Example of data received:
 
 {
-    "id": 1,
+    "id": 7,
     "country_name", "Brazil",
     "name": "Tallin"
 }
@@ -225,11 +226,11 @@ Exemple of data received:
 [
     {
         "id": 2,
-        "status": "Delivered"
+        "name": "Delivered"
     },
     {
         "id": 1,
-        "status": "In Transit"
+        "name": "In Transit"
     }
 ]
 
@@ -239,14 +240,14 @@ POST - To create a new status
 Example data to send:
 
 {
-    "status": "Missed"
+    "name": "Missed"
 }
 
 Example data received:
 
 {
     "id": 3,
-    "status": "Missed"
+    "name": "Missed"
 }
 
 [GET, PUT, DELETE]
@@ -259,7 +260,7 @@ Example of data received:
 [
     {
         "id": 1,
-        "status": "In Transit"
+        "name": "In Transit"
     }
 ]
 
@@ -269,14 +270,14 @@ PUT - To Update a status
 Example data to send:
 
 {
-    "status: "Possible to Delay"
+    "name: "Possible to Delay"
 }
 
 Example of data received:
 
 {
     "id": 1,
-    "status": "Possible to Delay"
+    "name": "Possible to Delay"
 }
 
 http://127.0.0.1:8000/api/v1/status/<int:pk>/
@@ -355,10 +356,7 @@ Example data to send:
 Example of data received:
 
 {
-    "object_number": "229900113388",
-    "actual_location": 3,
-    "next_location": 4,
-    "status": 2
+    "message": "Updated with success."
 }
 
 http://127.0.0.1:8000/api/v1/<str:object_number>/
