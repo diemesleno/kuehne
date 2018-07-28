@@ -47,7 +47,7 @@ Recomended to use Postman (https://www.getpostman.com)
 ```
 [GET, POST]
 
-http://127.0.0.1:8000/countries/
+http://127.0.0.1:8000/api/v1/countries/
 GET - To get the list of countries available
 
 Exemple of data received:
@@ -67,7 +67,7 @@ Exemple of data received:
     }
 ]
 
-http://127.0.0.1:8000/countries/
+http://127.0.0.1:8000/api/v1/countries/
 POST - To create a new country
 
 Example data to send:
@@ -85,7 +85,7 @@ Example data received:
 
 [GET, PUT, DELETE]
 
-http://127.0.0.1:8000/country/<int:pk>/
+http://127.0.0.1:8000/api/v1/country/<int:pk>/
 GET - Get a country by pk
 
 Example of data received:
@@ -97,7 +97,7 @@ Example of data received:
     }
 ]
 
-http://127.0.0.1:8000/country/<int:pk>/
+http://127.0.0.1:8000/api/v1/country/<int:pk>/
 PUT - To Update a country
 
 Example data to send:
@@ -113,7 +113,7 @@ Example of data received:
     "name": "Estonia"
 }
 
-http://127.0.0.1:8000/country/<int:pk>/
+http://127.0.0.1:8000/api/v1/country/<int:pk>/
 DELETE - Delete a country by pk
 ```
 
@@ -121,7 +121,7 @@ DELETE - Delete a country by pk
 ```
 [GET, POST]
 
-http://127.0.0.1:8000/cities/
+http://127.0.0.1:8000/api/v1/cities/
 GET - To get the list of cities available
 
 Exemple of data received:
@@ -159,25 +159,27 @@ Exemple of data received:
     }
 ]
 
-http://127.0.0.1:8000/cities/
+http://127.0.0.1:8000/api/v1/cities/
 POST - To create a new city
 
 Example data to send:
 
 {
-    "name": "Ituiutaba"
+    "name": "Ituiutaba",
+    "country": 1
 }
 
 Example data received:
 
 {
     "id": 1,
+    "country_name": "Brazil",
     "name": "Ituiutaba"
 }
 
 [GET, PUT, DELETE]
 
-http://127.0.0.1:8000/city/<int:pk>/
+http://127.0.0.1:8000/api/v1/city/<int:pk>/
 GET - Get a city by pk
 
 Example of data received:
@@ -189,24 +191,178 @@ Example of data received:
     }
 ]
 
-http://127.0.0.1:8000/city/<int:pk>/
+http://127.0.0.1:8000/api/v1/city/<int:pk>/
 PUT - To Update a city
 
 Example data to send:
 
 {
-    "name: "Tallin"
+    "name: "Tallin",
+    "country: 1
 }
 
 Example of data received:
 
 {
     "id": 1,
+    "country_name", "Brazil",
     "name": "Tallin"
 }
 
-http://127.0.0.1:8000/city/<int:pk>/
+http://127.0.0.1:8000/api/v1/city/<int:pk>/
 DELETE - Delete a city by pk
+```
+
+## Status Endpoints:
+```
+[GET, POST]
+
+http://127.0.0.1:8000/api/v1/status/
+GET - To get the list of status available
+
+Exemple of data received:
+
+[
+    {
+        "id": 2,
+        "status": "Delivered"
+    },
+    {
+        "id": 1,
+        "status": "In Transit"
+    }
+]
+
+http://127.0.0.1:8000/api/v1/status/
+POST - To create a new status
+
+Example data to send:
+
+{
+    "status": "Missed"
+}
+
+Example data received:
+
+{
+    "id": 3,
+    "status": "Missed"
+}
+
+[GET, PUT, DELETE]
+
+http://127.0.0.1:8000/api/v1/status/<int:pk>/
+GET - Get a status by pk
+
+Example of data received:
+
+[
+    {
+        "id": 1,
+        "status": "In Transit"
+    }
+]
+
+http://127.0.0.1:8000/api/v1/status/<int:pk>/
+PUT - To Update a status
+
+Example data to send:
+
+{
+    "status: "Possible to Delay"
+}
+
+Example of data received:
+
+{
+    "id": 1,
+    "status": "Possible to Delay"
+}
+
+http://127.0.0.1:8000/api/v1/status/<int:pk>/
+DELETE - Delete a status by pk
+```
+
+## Shipment Endpoints:
+```
+[GET, POST]
+
+http://127.0.0.1:8000/api/v1/
+GET - To get the list of shipments available
+
+Exemple of data received:
+
+[
+    {
+        "object_number": "120035339828",
+        "status_name": "Delivered",
+        "actual_location_name": "Tallin",
+        "next_location_name": "Berlin",
+        "updated": "2018-07-27T15:46:33.400233Z"
+    }
+]
+
+http://127.0.0.1:8000/api/v1/
+POST - To create a new shipment
+
+Example data to send:
+
+{
+	"object_number": "112233445566",
+	"status": 1,
+	"actual_location": 1,
+	"next_location": 3
+}
+
+Example data received:
+
+{
+    "object_number": "228811995533",
+    "status_name": "In Transit",
+    "actual_location_name": "Tartu",
+    "next_location_name": "Frankfurt",
+    "updated": "2018-07-27T18:42:02.022296Z"
+}
+
+[GET, PUT, DELETE]
+
+http://127.0.0.1:8000/api/v1/<str:object_number>
+GET - Get a shipment by object_number
+
+Example of data received:
+
+[
+    {
+        "object_number": "220035339829",
+        "status_name": "In Transit",
+        "actual_location_name": "São Paulo",
+        "next_location_name": "Tallin",
+        "updated": "2018-07-27T18:39:57.765503Z"
+    }
+]
+
+http://127.0.0.1:8000/api/v1/<str:object_number>/
+PUT - To Update a status
+
+Example data to send:
+
+{
+        "status": 2,
+        "actual_location": 3,
+        "next_location": 4
+}
+
+Example of data received:
+
+{
+    "object_number": "229900113388",
+    "actual_location": 3,
+    "next_location": 4,
+    "status": 2
+}
+
+http://127.0.0.1:8000/api/v1/<str:object_number>/
+DELETE - Delete a status by pk
 ```
 
 ## Some screenshots
