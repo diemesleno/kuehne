@@ -29,10 +29,10 @@ class CitySerializer(serializers.ModelSerializer):
             'country',
             'name'
         ]
+        read_only_fields = ['id']
         extra_kwargs = {
             'country': {'write_only': True}
         }
-        read_only_fields = ['id']
 
 
 
@@ -69,8 +69,7 @@ class ShipmentSerializer(serializers.ModelSerializer):
             'next_location_name',
             'updated'
         ]
-        read_only_fields = ['updated', 'object_number']
-        write_only_fields = ['status', 'actual_location', 'next_location']
+        read_only_fields = ['updated']
         extra_kwargs = {
             'status': {'write_only': True},
             'actual_location': {'write_only': True},
