@@ -16,7 +16,7 @@ class Base(models.Model):
 
 class Country(Base):
     """
-    Class to manage Countries (Simple Form)
+    Class to manage Countries
     """
     name = models.CharField(max_length=120, unique=True)
 
@@ -31,10 +31,10 @@ class Country(Base):
 
 class City(Base):
     """ 
-    Class to manage Cities (Simple Form)
+    Class to manage Cities
     """
-    country = models.ForeignKey('core.Country', verbose_name='Country', on_delete=models.DO_NOTHING)
     name = models.CharField(max_length=120)
+    country = models.ForeignKey('core.Country', verbose_name='Country', on_delete=models.DO_NOTHING)
 
     class Meta:
         verbose_name = 'City'
@@ -49,15 +49,15 @@ class Status(Base):
     """ 
     Class to manage the shipments status
     """
-    status = models.CharField(max_length=20, unique=True)
+    name = models.CharField(max_length=20, unique=True)
     
     class Meta:
         verbose_name = 'Status'
         verbose_name_plural = 'Status'
-        ordering = ('status',)
+        ordering = ('name',)
     
     def __str__(self):
-        return str(self.status)
+        return str(self.name)
 
 
 class Shipment(Base):
@@ -73,6 +73,9 @@ class Shipment(Base):
         verbose_name = 'Shipment'
         verbose_name_plural = 'Shipments'
         ordering = ('updated',)
+        indexes = [
+            models.Index(fields=['object_number']),
+        ]
     
     def __str__(self):
         return str(self.object_number)
