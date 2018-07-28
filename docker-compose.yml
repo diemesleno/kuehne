@@ -1,0 +1,36 @@
+version: '3.3'
+
+services:
+  postgres:
+    image: postgres:10-alpine
+    restart: always
+    hostname: postgres
+    ports: 
+      - "5432"
+    volumes:
+      - postgresdata:/var/lib/postgresql/data
+    networks: 
+      - production
+  web:
+    image: diemesleno/kuehne
+    hostname: web
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/usr/src/kuehne
+    ports:
+      - "8000:8000"
+    links:
+      - postgres
+    networks: 
+      - production
+    depends_on:
+      - postgres
+    command: ["./wait-for-it.sh", "postgres:5432"]
+volumes:
+  postgresdata:
+  web:
+networks:
+   production:
+      driver: bridge
