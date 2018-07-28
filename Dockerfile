@@ -10,10 +10,15 @@ RUN apk update && apk add --no-cache \
         bash \
     && rm -rf /var/cache/apk/*
 
+ENV INSTALL_PATH /usr/src/kuehne
+RUN mkdir -p $INSTALL_PATH
+
 COPY .  /usr/src/kuehne
 
-WORKDIR /usr/src/kuehne
+WORKDIR $INSTALL_PATH
 
 EXPOSE 8000
+
+RUN pip install --upgrade pip pip
 
 RUN pip install -r requirements.txt && rm -rf /root/.cache
