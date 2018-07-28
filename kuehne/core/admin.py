@@ -12,7 +12,7 @@ class CityAdmin(admin.ModelAdmin):
 
 
 class StatusAdmin(admin.ModelAdmin):
-    list_display = ('status', 'created', 'updated', 'active')
+    list_display = ('name', 'created', 'updated', 'active')
 
 
 class ShipmentAdmin(admin.ModelAdmin):
