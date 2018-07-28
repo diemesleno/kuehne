@@ -44,7 +44,7 @@ class StatusSerializer(serializers.ModelSerializer):
         model = Status
         fields = [
             'id',
-            'status'
+            'name'
         ]
         read_only_fields = ['id']
 
@@ -54,7 +54,7 @@ class ShipmentSerializer(serializers.ModelSerializer):
     """ 
     Serializer to handle Shipments
     """
-    status_name = serializers.ReadOnlyField(source='status.status')
+    status_name = serializers.ReadOnlyField(source='status.name')
     actual_location_name = serializers.ReadOnlyField(source='actual_location.name')
     next_location_name = serializers.ReadOnlyField(source='next_location.name')
     class Meta:
