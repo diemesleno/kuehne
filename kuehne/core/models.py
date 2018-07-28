@@ -1,5 +1,5 @@
 from django.db import models
-
+from django.core.validators import MinLengthValidator
 
 class Base(models.Model):
     """ 
@@ -64,7 +64,7 @@ class Shipment(Base):
     """ 
     Class to manage the shipments
     """
-    object_number = models.CharField(max_length=12, unique=True)
+    object_number = models.CharField(max_length=12, unique=True, validators=[MinLengthValidator(12)])
     status = models.ForeignKey('core.Status', verbose_name='Shipment Status', on_delete=models.DO_NOTHING)
     actual_location = models.ForeignKey('core.City', verbose_name='Actual Location', related_name='city_actual_located', on_delete=models.DO_NOTHING)
     next_location = models.ForeignKey('core.City', verbose_name='Next Location', related_name='city_next_location', on_delete=models.DO_NOTHING)
