@@ -132,8 +132,8 @@ class ShipmentAPIView(CreateModelMixin, UpdateModelMixin, DestroyModelMixin, Lis
                 reply = {
                     "message": "Updated with success."
                 }
-                return Response(reply, status=201)
-            return Response({'message': 'You must inform a valid object number'}, status=401)
+                return Response(reply, status=200)
+            return Response({'message': 'You must inform a valid object number'}, status=406)
    
     def delete(self, request, *args, **kwargs):
         return self.destroy(request, *args, **kwargs)
