@@ -15,6 +15,9 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from django.views import static as ds
+from django.conf.urls.static import static
+from django.conf import settings
 
 from kuehne.core.views import IndexView, Template404View, Template500View
 
@@ -22,7 +25,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/v1/', include('kuehne.core.api.urls'), name='api'),
     path('', IndexView.as_view(), name='index')
-]
+] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 
 handler404 = Template404View.as_view()
