@@ -17,6 +17,7 @@ class StatusAdmin(admin.ModelAdmin):
 
 class ShipmentAdmin(admin.ModelAdmin):
     list_display = ('object_number', 'status', 'actual_location', 'next_location', 'updated', 'active')
+    readonly_fields = ['object_number',]
 
 
 admin.site.register(Country, CountryAdmin)
