@@ -33,6 +33,8 @@ Code must be provided in a zip file.
 
 Any Operating System with docker/docker-compose installed:
 
+# OBS: Instructions to try the app without docker/docker compose will be in the end of this file
+
 ```
 a) git clone https://github.com/diemesleno/kuehne.git
 
@@ -373,6 +375,16 @@ DELETE - Delete a status by pk
 docker-compose exec web python manage.py test
 ```
 
+## Adminstration Area
+
+```
+# Create a superuser
+
+docker-compose exec web python manage.py createsuperuser
+
+# Access http://127.0.0.1:8000/admin/
+```
+
 ## Some screenshots
 
 ### Main Page
@@ -417,6 +429,31 @@ docker-compose exec web python manage.py test
     * Application core creation
 * 0.0.1
     * Project creation
+
+
+
+## How to try it without Docker/Docker-Compose
+
+```
+a) git clone https://github.com/diemesleno/kuehne.git
+
+b) cd kuehne
+
+c) Open the kuehne/settings.py and edit the information
+about the database.
+
+d) Open the kuehne/.env and comment the production database information
+
+e) pip3 -r requirements.txt
+
+f) python3 manage.py migrate
+
+g) python3 manage.py createsuperuser
+
+h) python3 manage.py runserver
+
+i) Access http://127.0.0.1:8000 or try it using Postman
+```
 
 
 ## Meta
