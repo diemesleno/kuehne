@@ -363,6 +363,14 @@ http://127.0.0.1:8000/api/v1/<str:object_number>/
 DELETE - Delete a status by pk
 ```
 
+## Automatic tests can be executed by
+
+```
+# In another terminal
+
+docker-compose exec web python manage.py test
+```
+
 ## Some screenshots
 
 ### Main Page
@@ -375,28 +383,39 @@ DELETE - Delete a status by pk
 ## Release History
 * 1.0.0
     * First release
-* 0.1.1
+* 0.1.6
     * Fixing issues
-* 0.1.0
+* 0.1.5
     * Testing deployment
-* 0.0.9
+* 0.1.4
     * Creation of Dockerfiles
-* 0.0.8
+* 0.1.3
     * Preparing files to production
+* 0.1.2
+    * Testing Core.API
+* 0.1.1
+    * Testing Core
+* 0.1.0
+    * Development of  Core Templates
+* 0.0.9
+    * Development of  Core URLs
+* 0.0.8
+    * Development of  Core Views
 * 0.0.7
-    * Development of Tests
+    * Development of  Core.API URLs
 * 0.0.6
-    * Development of  Blueprints
+    * Development of  Core.API Views
 * 0.0.5
-    * Development of  cli app
-* 0.0.4 
-    * Development of configurations
+    * Development of  Core.API Serializer
+* 0.0.4
+    * Settings configuration
 * 0.0.3
-    * Development of views Views
+    * Application Core.API creation
 * 0.0.2
-    * Development of project Models
+    * Application core creation
 * 0.0.1
-    * Project kuehne creation
+    * Project creation
+
 
 ## Meta
 
