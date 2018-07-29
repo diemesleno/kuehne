@@ -24,6 +24,8 @@ Code must be provided in a zip file.
 * Python 3.6.5
 * Django 2.0.7
 * PostgreSQL 10+
+* Docker
+* Docker-Compose
 
 ### Test Environment
 
